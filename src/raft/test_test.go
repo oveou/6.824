@@ -155,6 +155,8 @@ func TestFailAgree2B(t *testing.T) {
 
 	// disconnect one follower from the network.
 	leader := cfg.checkOneLeader()
+	fmt.Printf("Disconnect Server : %v \n", (leader+1)%servers)
+
 	cfg.disconnect((leader + 1) % servers)
 
 	// the leader and remaining follower should be
@@ -164,7 +166,6 @@ func TestFailAgree2B(t *testing.T) {
 	time.Sleep(RaftElectionTimeout)
 	cfg.one(104, servers-1, false)
 	cfg.one(105, servers-1, false)
-
 	// re-connect
 	cfg.connect((leader + 1) % servers)
 

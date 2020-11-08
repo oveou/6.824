@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 #
 # basic map-reduce test
 #
